@@ -4,7 +4,7 @@
  * @Date: 15-2-5 下午4:34
  * @Version: 1.0
  */
-package com.analoan.entity;
+package com.analoan.parser.entity;
 
 
 import javax.persistence.*;

@@ -6,15 +6,13 @@
  */
 package com.analoan.controller;
 
-import com.analoan.entity.UserInfo;
-import com.analoan.entity.UserRole;
-import com.analoan.service.UserRepository;
-import com.analoan.service.UserRoleRepositoy;
-import com.fasterxml.jackson.databind.util.ArrayIterator;
+import com.analoan.parser.entity.UserInfo;
+import com.analoan.parser.entity.UserRole;
+import com.analoan.parser.service.UserRepository;
+import com.analoan.parser.service.UserRoleRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
