@@ -6,21 +6,16 @@
  */
 package com.analoan.sprider;
 
-import org.apache.http.HttpEntity;
+import com.analoan.sprider.entity.WebConfig;
+import com.analoan.sprider.httpservice.GetThread;
 import org.apache.http.HttpHost;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.ManagedHttpClientConnectionFactory;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.protocol.HttpContext;
 
-import java.io.IOException;
+import java.util.List;
 
 /**
  * <b>SpiderManager</b>
@@ -34,69 +29,43 @@ import java.io.IOException;
  */
 public class SpiderManager {
 
-    private PoolingHttpClientConnectionManager pool;
+    private static PoolingHttpClientConnectionManager pool = new PoolingHttpClientConnectionManager();
 
-    public void getConn() throws InterruptedException {
-        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setConnectionManager(cm)
-                .build();
-
-        // URL列表数组
-        String[] urisToGet = {
-                "http://www.domain1.com/",
-                "http://www.domain2.com/",
-                "http://www.domain3.com/",
-                "http://www.domain4.com/"
-        };
-
-        // 为每个url创建一个线程，GetThread是自定义的类
-        GetThread[] threads = new GetThread[urisToGet.length];
-        for (int i = 0; i < threads.length; i++) {
-            HttpGet httpget = new HttpGet(urisToGet[i]);
-            threads[i] = new GetThread(httpClient, httpget);
-        }
-
-        // 启动线程
-        for (int j = 0; j < threads.length; j++) {
-            threads[j].start();
-        }
-
-        // join the threads
-        for (int j = 0; j < threads.length; j++) {
-            threads[j].join();
-        }
-
+    public SpiderManager() {
+        pool.setMaxTotal(200);//设置最大连接数200
+        pool.setDefaultMaxPerRoute(3);//设置每个路由默认连接数
     }
 
-    static class GetThread extends Thread {
-
-        private final CloseableHttpClient httpClient;
-        private final HttpContext context;
-        private final HttpGet httpget;
-
-        public GetThread(CloseableHttpClient httpClient, HttpGet httpget) {
-            this.httpClient = httpClient;
-            this.context = HttpClientContext.create();
-            this.httpget = httpget;
-        }
-
-        @Override
-        public void run() {
-            try {
-                CloseableHttpResponse response = httpClient.execute(
-                        httpget, context);
-                try {
-                    HttpEntity entity = response.getEntity();
-                } finally {
-                    response.close();
-                }
-            } catch (ClientProtocolException ex) {
-                // Handle protocol errors
-            } catch (IOException ex) {
-                // Handle I/O errors
-            }
-        }
-
+    public void fetch(List<WebConfig> wcList) throws InterruptedException {
+//        HttpGet httpget = null;
+//        for (int i = 0; i < wcList.size(); i++) {
+//
+//            httpget = new HttpGet(urisToGet[i]);
+//            threads[i] = new GetThread(httpClient, httpget);
+//        }
+//
+//
+//        CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(pool).build();
+//        HttpHost host = new HttpHost("webservice.webxml.com.cn");//针对的主机
+//        pool.setMaxPerRoute(new HttpRoute(host), 5);//每个路由器对每个服务器允许最大5个并发访问
+//        // URL列表数组
+//        String[] urisToGet = {
+//                "http://www.domain1.com/",
+//                "http://www.domain2.com/",
+//                "http://www.domain3.com/",
+//                "http://www.domain4.com/"
+//        };
+//
+//        // 为每个url创建一个线程，GetThread是自定义的类
+//        GetThread[] threads = new GetThread[urisToGet.length];
+//        for (int i = 0; i < threads.length; i++) {
+//            HttpGet httpget = new HttpGet(urisToGet[i]);
+//            threads[i] = new GetThread(httpClient, httpget);
+//        }
+//
+//        // 启动线程
+//        for (int j = 0; j < threads.length; j++) {
+//            threads[j].start();
+//        }
     }
 }

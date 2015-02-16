@@ -6,10 +6,10 @@
  */
 package com.analoan.controller;
 
-import com.analoan.parser.entity.UserInfo;
-import com.analoan.parser.entity.UserRole;
-import com.analoan.parser.service.UserRepository;
-import com.analoan.parser.service.UserRoleRepositoy;
+//import com.analoan.sprider.entity.UserInfo;
+//import com.analoan.parser.entity.UserRole;
+//import com.analoan.sprider.service.UserRepository;
+//import com.analoan.parser.service.UserRoleRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -33,49 +33,49 @@ import java.util.List;
 @RequestMapping("/data")
 public class DataController {
 
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UserRoleRepositoy roleRepositoy;
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    UserInfo view(@PathVariable("id") int id) {
-//        UserInfo ui = new UserInfo();
-//        ui.setId(3);
-//        ui.setUsername("zhang");
-//        ui.setUserpass("zhang");
+//    @Autowired
+//    UserRepository userRepository;
+//    @Autowired
+//    UserRoleRepositoy roleRepositoy;
+//
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    UserInfo view(@PathVariable("id") int id) {
+////        UserInfo ui = new UserInfo();
+////        ui.setId(3);
+////        ui.setUsername("zhang");
+////        ui.setUserpass("zhang");
+////        return ui;
+//
+//        UserInfo ui = userRepository.findOne(id);
 //        return ui;
-
-        UserInfo ui = userRepository.findOne(id);
-        return ui;
-    }
-
-    @RequestMapping(value="/role")
-    List<UserRole> role() {
-        List<UserRole> list = roleRepositoy.findAll();
-        return list;
-    }
-
-
-    @RequestMapping(value="/list")
-    List<UserRole> list() {
-        List<UserRole> roles = new ArrayList<UserRole>();
-        UserRole ur = new UserRole();
-        UserInfo ui = userRepository.findOne(1);
-        ur.setRoleid(1);
-        ur.setUser(ui);
-        ur.setUsername("1");
-        roles.add(ur);
-
-
-        ur = new UserRole();
-        ui = userRepository.findOne(2);
-        ur.setRoleid(2);
-        ur.setUser(ui);
-        ur.setUsername("2");
-        roles.add(ur);
-
-        return roles;
-    }
+//    }
+//
+//    @RequestMapping(value="/role")
+//    List<UserRole> role() {
+//        List<UserRole> list = roleRepositoy.findAll();
+//        return list;
+//    }
+//
+//
+//    @RequestMapping(value="/list")
+//    List<UserRole> list() {
+//        List<UserRole> roles = new ArrayList<UserRole>();
+//        UserRole ur = new UserRole();
+//        UserInfo ui = userRepository.findOne(1);
+//        ur.setRoleid(1);
+//        ur.setUser(ui);
+//        ur.setUsername("1");
+//        roles.add(ur);
+//
+//
+//        ur = new UserRole();
+//        ui = userRepository.findOne(2);
+//        ur.setRoleid(2);
+//        ur.setUser(ui);
+//        ur.setUsername("2");
+//        roles.add(ur);
+//
+//        return roles;
+//    }
 
 }

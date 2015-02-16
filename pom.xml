@@ -21,7 +21,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!--<exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
+
         <!-- spring-data-jpa程序的启动项依赖，底层为hibernate实现，若不使用此框架则可以依赖其他的orm框架 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

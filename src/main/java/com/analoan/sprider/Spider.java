@@ -6,6 +6,8 @@
  */
 package com.analoan.sprider;
 
+import com.analoan.sprider.entity.WebConfig;
+
 /**
  * <b>Spider</b>
  * <p><b>详细说明：</b></p>
@@ -18,13 +20,28 @@ package com.analoan.sprider;
  */
 public interface Spider {
 
+    /**
+     * 唯一ID
+     * @return
+     */
     public String getId();
 
+    /**
+     * 爬虫名称
+     * @return
+     */
     public String getName();
 
-    public SpiderCfg getSpiderCfg();
+    /**
+     * 爬虫类型
+     * @return ie/firefox/chrome
+     */
+    public String getType();
 
-    public SpiderWebCfg getFetchWebCfg();
+    /**
+     * 爬取数据，并且入库
+     * @param wc
+     */
+    public void fetch(WebConfig wc);
 
-    public void fetch();
 }
