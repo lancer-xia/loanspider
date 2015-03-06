@@ -4,7 +4,7 @@
  * @Date: 15-2-16 下午3:42
  * @Version: 1.0
  */
-package com.analoan.sprider.httpservice;
+package com.analoan.sprider.responsehandler.parser;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -27,7 +27,11 @@ import java.nio.charset.Charset;
  * <!--在此添加修改列表，参考第一行内容-->
  * <tr bgcolor="#CCCCFF"><td>1</td><td>lancer</td><td>15-2-16 下午3:42</td><td>新建内容</td></tr>
  */
-public class HtmlHandleResponse implements ResponseHandler {
+public class ResponseXmlHandler implements ResponseHandler {
+
+    public ResponseXmlHandler(String mapping) {
+
+    }
 
     @Override
     public Object handleResponse(HttpResponse response) throws ClientProtocolException, IOException {

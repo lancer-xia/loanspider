@@ -4,14 +4,14 @@
  * @Date: 15-2-16 下午5:17
  * @Version: 1.0
  */
-package com.analoan.sprider.httpservice;
+package com.analoan.sprider.responsehandler;
 
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.protocol.HttpContext;
-
+import org.apache.http.client.HttpRequestRetryHandler;
 import javax.net.ssl.SSLException;
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -27,7 +27,7 @@ import java.net.UnknownHostException;
  * <!--在此添加修改列表，参考第一行内容-->
  * <tr bgcolor="#CCCCFF"><td>1</td><td>lancer</td><td>15-2-16 下午5:17</td><td>新建内容</td></tr>
  */
-public class SpiderRequestRetryHandler implements org.apache.http.client.HttpRequestRetryHandler {
+public class SpiderRequestRetryHandler implements HttpRequestRetryHandler {
 
     @Override
     public boolean retryRequest(IOException e, int i, HttpContext httpContext) {

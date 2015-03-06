@@ -1,16 +1,17 @@
 /**
  * @Company:
  * @Author: lancer
- * @Date: 15-2-16 下午3:44
+ * @Date: 15-2-16 下午3:42
  * @Version: 1.0
  */
-package com.analoan.sprider.httpservice;
+package com.analoan.sprider.responsehandler.parser;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.entity.ContentType;
+import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,16 +19,20 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 /**
- * <b>JsonHandleResponse</b>
+ * <b>HtmlHandleResponse</b>
  * <p><b>详细说明：</b></p>
  * 在这里添加详细说明
  * <p><b>修改列表：</b></p>
  * <table width="" cellspacing=1 cellpadding=3 border=1>
  * <tr bgcolor="#CCCCFF"><td>序号</td><td>作者</td><td>修改日期</td><td>修改内容</td></tr>
  * <!--在此添加修改列表，参考第一行内容-->
- * <tr bgcolor="#CCCCFF"><td>1</td><td>lancer</td><td>15-2-16 下午3:44</td><td>新建内容</td></tr>
+ * <tr bgcolor="#CCCCFF"><td>1</td><td>lancer</td><td>15-2-16 下午3:42</td><td>新建内容</td></tr>
  */
-public class JsonHandleResponse implements ResponseHandler {
+public class ResponseHtmlHandler implements ResponseHandler {
+
+    public ResponseHtmlHandler(String mapping) {
+
+    }
 
     @Override
     public Object handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
@@ -41,6 +46,8 @@ public class JsonHandleResponse implements ResponseHandler {
             //获取返回结果的字符集 如：utf-8  gbk，并以这种字符集来读取流信息
             ContentType contentType = ContentType.getOrDefault(entity);
             Charset charset = contentType.getCharset();
+
+            System.out.println(EntityUtils.toString(response.getEntity()));
 
             InputStreamReader reader = new InputStreamReader(entity.getContent(), charset);
             BufferedReader br = new BufferedReader(reader);

@@ -82,15 +82,15 @@ import org.apache.http.util.EntityUtils;
 public class Main {
 
 
-    public static void main(String[] args) {
-
-        try {
-            test1();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//
+//        try {
+//            test1();
+//        } catch (Exception e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
 
 
     /**
